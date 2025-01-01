@@ -1,0 +1,21 @@
+# Environment settings used by https://github.com/aifunz/kb-grok
+# Rename this .env and save it to My Drive/Colab Notebooks
+
+# Vector path and file names
+# These uses the drive path to gDrive from https://colab.google.com
+SAVE_DIR=/content/drive/MyDrive/vector_db
+VECTOR_DB_DIR=/content/drive/MyDrive/vector_db
+VECTORS_JOBLIB=vectors.joblib
+VECTORIZER_JOBLIB=vectorizer.joblib
+HASHES_JOBLIB=file_hashes.joblib
+
+# Google Drive folder ID that will be vectorized for the knowledge base
+# https://youtu.be/j03daXtCN7s?feature=shared
+FOLDER_ID=
+
+# Grok settings - get an API key here https://console.x.ai/
+GROK_API_KEY=
+GROK_MODEL=grok-2-latest
+
+# Tempature is how creative the response will be even with vectors
+GROK_TEMP=0

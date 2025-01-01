@@ -36,22 +36,61 @@ This project provides an enhanced chat interface with integrated support for a F
    - User-facing component for querying the knowledge base.
    - Integrates with FAISS for context-aware responses.
 
-## How to Run
+## How to Use with Google Colab
 
 1. **Prerequisites**:
-   - Python 3.x.
+   - A Google account with access to Google Colab and Google Drive.
+   - Python 3.x installed on the Colab instance.
    - Libraries: `faiss`, `numpy`, `requests`, `ipywidgets`, `google.colab`.
 
 2. **Setup**:
-   - Place your vector database files (`faiss_index.index`, `metadata.json`) in the specified `save_dir`.
-   - Modify the configuration variables (`SAVE_DIR`, `MODEL`, `TEMP`) as required.
+   - **Google Drive Integration**:
+     - Mount Google Drive in your Colab notebook:
+       ```python
+       from google.colab import drive
+       drive.mount('/content/drive')
+       ```
+     - Ensure your vector database files are saved in the appropriate directory (e.g., `/content/drive/MyDrive/vector_db`).
+
+   - **Configure Environment Variables**:
+     - Rename the `_env` file to `.env` and save it in `My Drive/Colab Notebooks`.
+     - The `.env` file attributes should include:
+       ```plaintext
+       # Environment settings used by https://github.com/aifunz/kb-grok
+       # Rename this .env and save it to My Drive/Colab Notebooks
+
+       # Vector path and file names
+       SAVE_DIR=/content/drive/MyDrive/vector_db
+       VECTOR_DB_DIR=/content/drive/MyDrive/vector_db
+       VECTORS_JOBLIB=vectors.joblib
+       VECTORIZER_JOBLIB=vectorizer.joblib
+       HASHES_JOBLIB=file_hashes.joblib
+
+       # Google Drive folder ID that will be vectorized for the knowledge base
+       FOLDER_ID=
+
+       # Grok settings - get an API key here https://console.x.ai/
+       GROK_API_KEY=
+       GROK_MODEL=grok-2-latest
+
+       # Temperature determines the creativity of the response
+       GROK_TEMP=0
+       ```
+
+   - **Set Up Variables in Colab**:
+     - Load the `.env` file in your Colab environment:
+       ```python
+       import os
+       from dotenv import load_dotenv
+       load_dotenv('/content/drive/MyDrive/Colab Notebooks/.env')
+       ```
 
 3. **Execution**:
    - Run the notebook to initialize the chat interface.
-   - Interact with the knowledge base using the chat input.
+   - Use the chat interface to query the knowledge base.
 
-4. **Google Drive Integration**:
-   - Ensure Google Drive is mounted if using it to store vector database files.
+4. **Knowledge Base Folder**:
+   - Specify the Google Drive folder ID to vectorize documents in the `.env` file under `FOLDER_ID`.
 
 ## Key Functions
 
